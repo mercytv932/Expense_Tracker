@@ -1,4 +1,14 @@
- type Category = 'food' | 'transport' | 'entertainment' | 'bills' | 'other';
+const form = document.querySelector("form") as  HTMLFormElement;
+const amountInput = document.querySelector("amountInput") as HTMLInputElement;
+const dateInput = document.querySelector("dateInput") as HTMLInputElement;
+const label = document.querySelector("label") as HTMLLabelElement;
+const category = document.querySelector("category") as HTMLSelectElement;
+const submitBtn = document.querySelector("submitBtn") as HTMLButtonElement;
+const displayArea = document.querySelector("displayArea") as HTMLDivElement;
+
+
+
+type Category = 'food' | 'transport' | 'entertainment' | 'bills' | 'other';
 
 class Expense {
   id: number;
