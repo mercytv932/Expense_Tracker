@@ -1,10 +1,10 @@
-const form = document.querySelector("form") as  HTMLFormElement;
-const amountInput = document.querySelector("amountInput") as HTMLInputElement;
-const dateInput = document.querySelector("dateInput") as HTMLInputElement;
-const label = document.querySelector("label") as HTMLLabelElement;
-const category = document.querySelector("category") as HTMLSelectElement;
-const submitBtn = document.querySelector("submitBtn") as HTMLButtonElement;
-const displayArea = document.querySelector("displayArea") as HTMLDivElement;
+const form = document.querySelector("#form") as  HTMLFormElement;
+const amountInput = document.querySelector("#amountInput") as HTMLInputElement;
+const dateInput = document.querySelector("#dateInput") as HTMLInputElement;
+const category = document.querySelector("#category") as HTMLSelectElement;
+const submitBtn = document.querySelector(".submitBtn") as HTMLButtonElement;
+const displayArea = document.querySelector("#displayArea") as HTMLDivElement;
+const descriptionInput = document.querySelector("#descriptionInput") as HTMLInputElement;;
 
 
 
@@ -53,3 +53,18 @@ constructor( amount: number, date: Date, category: Category, description: string
   }
 
 }
+
+
+ const tracker = new ExpenseTracker();
+
+form.addEventListener("submit", function(e){
+  e.preventDefault();
+
+  const description = descriptionInput.value;
+  const amount = Number(amountInput.value);
+  const date = new Date(dateInput.value);
+  const selectedCategory = category.value as Category;
+ 
+  const newExpense = new Expense(amount, date, selectedCategory, description);
+  tracker.addExpense(newExpense);
+});
