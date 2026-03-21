@@ -64,7 +64,27 @@ form.addEventListener("submit", function(e){
   const amount = Number(amountInput.value);
   const date = new Date(dateInput.value);
   const selectedCategory = category.value as Category;
- 
+
+  if(!description.trim()){
+    alert("Description is required");
+    return;
+  }
+
+  if(amount <= 0){
+  alert("Amount must be greater than 0");
+  return;
+  }
+
+  if(!dateInput.value){
+    alert("Please pick a date");
+    return;
+  }
+
+  if(!selectedCategory){
+    alert("You need to select something")
+    return;
+  }
+
   const newExpense = new Expense(amount, date, selectedCategory, description);
   tracker.addExpense(newExpense);
 });
