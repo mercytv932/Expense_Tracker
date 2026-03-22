@@ -1,10 +1,10 @@
-const form = document.querySelector("#form") as  HTMLFormElement;
+const expenseForm = document.querySelector("#expenseForm") as  HTMLFormElement;
 const amountInput = document.querySelector("#amountInput") as HTMLInputElement;
 const dateInput = document.querySelector("#dateInput") as HTMLInputElement;
 const category = document.querySelector("#category") as HTMLSelectElement;
 const submitBtn = document.querySelector(".submitBtn") as HTMLButtonElement;
 const displayArea = document.querySelector("#displayArea") as HTMLDivElement;
-const descriptionInput = document.querySelector("#descriptionInput") as HTMLInputElement;;
+const descriptionInput = document.querySelector("#descriptionInput") as HTMLInputElement;
 
 
 
@@ -52,12 +52,15 @@ constructor( amount: number, date: Date, category: Category, description: string
     return this.expenses.reduce((total, expense) => total + expense.amount, 0);
   }
 
+  getExpense(): Expense[] {
+    return this.expenses;
+  }
 }
 
 
  const tracker = new ExpenseTracker();
 
-form.addEventListener("submit", function(e){
+expenseForm.addEventListener("submit", function(e){
   e.preventDefault();
 
   const description = descriptionInput.value;
@@ -87,4 +90,35 @@ form.addEventListener("submit", function(e){
 
   const newExpense = new Expense(amount, date, selectedCategory, description);
   tracker.addExpense(newExpense);
+  displayExpense(tracker.getExpense());
 });
+
+
+function displayExpense(expenses: Expense[]): void{
+  displayArea.innerHTML = "";
+
+  expenses.forEach(expense =>{
+
+    const newPTag = document.createElement("p");
+    newPTag.textContent = expense.description;
+
+    const newHTag1 = document.createElement("h3");
+    newHTag1.textContent = expense.amount.toString();
+
+    const newHTag2 = document.createElement("h4");
+    newHTag2.textContent = expense.date.toLocaleDateString();
+
+    const newHTag3 = document.createElement("h3");
+    newHTag3.textContent = expense.category;
+
+    const newDiv = document.createElement("div");
+
+    newDiv.appendChild(newPTag);
+    newDiv.appendChild(newHTag1);
+    newDiv.appendChild(newHTag2);
+    newDiv.appendChild(newHTag3)
+
+    displayArea.appendChild(newDiv);
+  });
+  
+}
