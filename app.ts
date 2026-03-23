@@ -5,6 +5,7 @@ const category = document.querySelector("#category") as HTMLSelectElement;
 const submitBtn = document.querySelector(".submitBtn") as HTMLButtonElement;
 const displayArea = document.querySelector("#displayArea") as HTMLDivElement;
 const descriptionInput = document.querySelector("#descriptionInput") as HTMLInputElement;
+const totals = document.querySelector("#totals") as HTMLDivElement;
 
 
 
@@ -55,7 +56,17 @@ constructor( amount: number, date: Date, category: Category, description: string
   getExpense(): Expense[] {
     return this.expenses;
   }
+
+  
+
+ getTotalByCategory(category: Category): number{
+  return this.expenses
+  .filter(expense => expense.category === category)
+  .reduce((total, expense) => total + expense.amount, 0);
 }
+
+}
+
 
 
  const tracker = new ExpenseTracker();
@@ -91,6 +102,8 @@ expenseForm.addEventListener("submit", function(e){
   const newExpense = new Expense(amount, date, selectedCategory, description);
   tracker.addExpense(newExpense);
   displayExpense(tracker.getExpense());
+  totals.textContent = `Total: $${tracker.getTotal()}`;
+  expenseForm.reset();
 });
 
 
@@ -116,9 +129,8 @@ function displayExpense(expenses: Expense[]): void{
     newDiv.appendChild(newPTag);
     newDiv.appendChild(newHTag1);
     newDiv.appendChild(newHTag2);
-    newDiv.appendChild(newHTag3)
+    newDiv.appendChild(newHTag3);
 
     displayArea.appendChild(newDiv);
-  });
-  
+  }); 
 }
