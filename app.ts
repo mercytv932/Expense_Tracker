@@ -6,8 +6,10 @@ const submitBtn = document.querySelector(".submitBtn") as HTMLButtonElement;
 const displayArea = document.querySelector("#displayArea") as HTMLDivElement;
 const descriptionInput = document.querySelector("#descriptionInput") as HTMLInputElement;
 const totals = document.querySelector("#totals") as HTMLDivElement;
+const filterBtn = document.querySelectorAll <HTMLButtonElement>(".filterBtn");
 
 
+let currentFilter = 'all';
 
 type Category = 'food' | 'transport' | 'entertainment' | 'bills' | 'other';
 
@@ -102,6 +104,7 @@ expenseForm.addEventListener("submit", function(e){
   const newExpense = new Expense(amount, date, selectedCategory, description);
   tracker.addExpense(newExpense);
   displayExpense(tracker.getExpense());
+
   totals.textContent = `Total: $${tracker.getTotal()}`;
   expenseForm.reset();
 });
@@ -134,3 +137,27 @@ function displayExpense(expenses: Expense[]): void{
     displayArea.appendChild(newDiv);
   }); 
 }
+
+filterBtn.forEach(button =>{
+  button.addEventListener("click", ()=>{
+    currentFilter = button.dataset.filter as string;
+
+    const filtered = currentFilter === 'all'
+    ? tracker .getExpense()
+    : tracker .getExpense().filter(expense => expense.category === currentFilter);
+
+    displayExpense(filtered);
+  });
+});
+
+
+/*
+
+  filterBtn.forEach(button =>{
+    button.addEventListener("click", ()=>{
+      state.filter = button.dataset.filter;
+      render();
+    });
+  });
+
+*/
