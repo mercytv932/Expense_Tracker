@@ -39,7 +39,6 @@
       color: var(--green);
       letter-spacing: 2px;
       margin-bottom: 30px;
-
     }
 
     form{
@@ -50,7 +49,6 @@
       flex-direction: column;
       gap: 12px;
       margin-bottom: 20px;
-
     }
 
     input, select {
@@ -61,7 +59,6 @@
       border-radius: 8px;
       font-size: 1rem;
       width: 100%;
-
     }
 
     .submitBtn{
@@ -81,6 +78,41 @@
       flex-wrap: wrap;
       margin-bottom: 20px;
     }
+
+    .filterBtn {
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid #333;
+      padding: 8px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.85rem;
+    }
+
+    .filterBtn:hover {
+      border-color: var(--green);
+      color: var(--green);
+    }
+
+    #displayArea > div {
+      background: var(--card);
+      padding: 16px;
+      border-radius: 10px;
+      margin-bottom: 12px;
+      border-left: 4px solid var(--green);
+    }
+
+    #totals {
+      background: var(--surface);
+      padding: 16px;
+      border-radius: 10px;
+      text-align: center;
+      font-size: 1.2rem;
+      color: var(--green);
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
   </style>
 </head>
 <body>
