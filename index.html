@@ -4,12 +4,90 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Expense Tracker</title>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    :root{
+      --bg: #0f0f0f;
+      --surface: #1a1a1a;
+      --card: #242424;
+      --green: #00c896;
+      --red: #ff4757;
+      --text: #f0f0f0;
+      --muted: #888;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body{
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', sans-serif;
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 40px 20px;
+
+    }
+
+    h1{
+      text-align: center;
+      font-size: 2rem;
+      color: var(--green);
+      letter-spacing: 2px;
+      margin-bottom: 30px;
+
+    }
+
+    form{
+      background:var(--surface);
+      padding: 24px;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 20px;
+
+    }
+
+    input, select {
+      background-image: var(--card);
+      border: 1px solid #333;
+      color: var(--text);
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 1rem;
+      width: 100%;
+
+    }
+
+    .submitBtn{
+      background: var(--green);
+      color: #000;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    #filter {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+  </style>
 </head>
 <body>
 
   <form id="expenseForm">
     <input type="text"  id="descriptionInput" placeholder="description">
-    <input type="number"  id="amountInput" placeholder="amount$">
+    <input type="number"  id="amountInput" placeholder="0.00">
     <input type="date" id="dateInput">
 
     <label for="category">Category</label>
