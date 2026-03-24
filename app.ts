@@ -8,8 +8,14 @@ const descriptionInput = document.querySelector("#descriptionInput") as HTMLInpu
 const totals = document.querySelector("#totals") as HTMLDivElement;
 const filterBtn = document.querySelectorAll <HTMLButtonElement>(".filterBtn");
 
+declare const flatpickr : any;
+
+flatpickr("#dateInput", {
+  dateFormat: "Y-m-d"
+});
 
 let currentFilter = 'all';
+
 
 type Category = 'food' | 'transport' | 'entertainment' | 'bills' | 'other';
 
