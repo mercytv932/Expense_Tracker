@@ -103,6 +103,8 @@ expenseForm.addEventListener("submit", function(e){
 
   const newExpense = new Expense(amount, date, selectedCategory, description);
   tracker.addExpense(newExpense);
+  saveExpenses();
+
   displayExpense(tracker.getExpense());
 
   totals.textContent = `Total: $${tracker.getTotal()}`;
@@ -138,6 +140,8 @@ function displayExpense(expenses: Expense[]): void{
   }); 
 }
 
+
+
 filterBtn.forEach(button =>{
   button.addEventListener("click", ()=>{
     currentFilter = button.dataset.filter as string;
@@ -151,13 +155,21 @@ filterBtn.forEach(button =>{
 });
 
 
-/*
+function saveExpenses(): void{
+  localStorage.setItem('expenses', JSON.stringify(tracker.getExpense()));
+}
 
-  filterBtn.forEach(button =>{
-    button.addEventListener("click", ()=>{
-      state.filter = button.dataset.filter;
-      render();
+window.addEventListener("load", function(){
+  const stored =  localStorage.getItem('expenses')
+  if(stored){
+    const expenses = JSON.parse(stored); //loop through and add to tracker
+
+    expenses.forEach((e: any) => {
+      const expense = new Expense(e.amount, new Date(e.date), e.category, e.description);
+      tracker.addExpense(expense);
     });
-  });
 
-*/
+    displayExpense(tracker.getExpense());
+    totals.textContent = `Total: $${tracker.getTotal()}`;
+  }
+});
