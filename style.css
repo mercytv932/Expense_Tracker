@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=DM+Sans:wght@300;400;500&display=swap');
+
+:root {
+  --bg: #0a0a0a;
+  --surface: #111111;
+  --card: #1a1a1a;
+  --gold: #c9a84c;
+  --gold-dim: rgba(201, 168, 76, 0.12);
+  --gold-glow: rgba(201, 168, 76, 0.25);
+  --red: #e74c3c;
+  --red-dim: rgba(231, 76, 60, 0.12);
+  --text: #e8e0d0;
+  --muted: #666;
+  --border: rgba(201, 168, 76, 0.2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg);
+  background-image: 
+    radial-gradient(ellipse at 20% 20%, rgba(201, 168, 76, 0.04) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 80%, rgba(201, 168, 76, 0.03) 0%, transparent 60%);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 50px 24px;
+}
+
+h1 {
+  font-family: 'Cormorant Garamond', serif;
+  text-align: left;
+  font-size: 3rem;
+  font-weight: 300;
+  color: var(--text);
+  letter-spacing: -1px;
+  margin-bottom: 6px;
+  text-shadow: 0 0 40px rgba(201, 168, 76, 0.15);
+  margin-bottom: 10px;
+}
+
+h1 span {
+  color: var(--gold);
+  text-shadow: 0 0 20px rgba(201, 168, 76, 0.5);
+}
+
+.subtitle {
+  color: var(--muted);
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+}
+
+form {
+  background: var(--surface);
+  padding: 28px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 24px;
+  box-shadow: 0 0 40px rgba(201, 168, 76, 0.05), inset 0 1px 0 rgba(201, 168, 76, 0.1);
+}
+
+input::placeholder {
+  color: var(--muted);
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.5);
+  cursor: pointer;
+}
+
+select option {
+  background-color: var(--card);
+  color: var(--text);
+}
+
+input, select {
+  background: var(--card);
+  border: 1px solid rgba(255,255,255,0.06);
+  color: var(--text);
+  padding: 13px 16px;
+  border-radius: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  width: 100%;
+  color-scheme: dark;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+input:focus, select:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px var(--gold-dim), 0 0 20px rgba(201, 168, 76, 0.15);
+}
+
+input:hover, select:hover {
+  border-color: rgba(201, 168, 76, 0.3);
+}
+
+.submitBtn {
+  background: var(--gold);
+  color: #0a0a0a;
+  border: none;
+  padding: 13px;
+  border-radius: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(201, 168, 76, 0.2);
+}
+
+.submitBtn:hover {
+  background: #e0b95a;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 30px rgba(201, 168, 76, 0.5), 0 0 60px rgba(201, 168, 76, 0.2);
+}
+
+#filter {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.filterBtn {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 8px 18px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.filterBtn:hover, .filterBtn.active {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: var(--gold-dim);
+  box-shadow: 0 0 12px rgba(201, 168, 76, 0.2);
+}
+
+#displayArea > div {
+  background: var(--card);
+  padding: 20px 24px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  border: 1px solid rgba(255,255,255,0.04);
+  border-left: 3px solid var(--gold);
+  transition: all 0.3s ease;
+}
+
+#displayArea > div:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.4), 0 0 20px rgba(201, 168, 76, 0.08);
+  border-color: rgba(201, 168, 76, 0.3);
+  border-left-color: var(--gold);
+  background: #1e1e1e;
+}
+#totals {
+  background: var(--surface);
+  padding: 20px 28px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 200, 150, 0.3);
+  text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  color: #00c896;
+  font-weight: 400;
+  margin-top: 24px;
+  letter-spacing: 0.5px;
+  transition: 0.2s ease;
+}
+
+#totals:hover {
+  box-shadow: 0 0 30px rgba(0, 200, 150, 0.15), 
+              0 0 60px rgba(0, 200, 150, 0.08),
+              inset 0 1px 0 rgba(0, 200, 150, 0.2);
+  text-shadow: 0 0 20px rgba(0, 200, 150, 0.6), 
+               0 0 40px rgba(0, 200, 150, 0.3);
+  
+}

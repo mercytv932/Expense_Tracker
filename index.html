@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Tracker</title>
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+</head>
+<body>
+
+  <h1>Expense <span>Tracker</span></h1>
+  <!-- <p>Track . Manage . Stay on budget</p> -->
+
+  <form id="expenseForm">
+    <input type="text"  id="descriptionInput" placeholder="description">
+    <input type="number"  id="amountInput" placeholder="0.00">
+    <input type="date" id="dateInput">
+
+    <label for="category">Category</label>
+    <select name="category" id="category">
+      <option value="">--Select an option--</option>
+      <option value="food">Food</option>
+      <option value="transport">Transport</option>
+      <option value="entertainment">Entertainment</option>
+      <option value="bills">Bills</option>
+      <option value="other">Other</option>
+    </select>
+
+    <button class="submitBtn">Submit</button>
+  </form>
+
+  <div id="filter">
+    <button type="button" class="filterBtn" data-filter="all">All</button>
+    <button type="button" class="filterBtn" data-filter="food">Food</button>
+    <button type="button" class="filterBtn" data-filter="transport">Transport</button>
+    <button type="button" class="filterBtn" data-filter="entertainment">Entertainment</button>
+    <button type="button" class="filterBtn" data-filter="bills">Bills</button>
+    <button type="button" class="filterBtn" data-filter="other">Other</button>
+  </div>
+
+  <div id="displayArea"></div>
+  <div id="totals"></div>
+
+  
+  <script src="dist/app.js"></script>
+</body>
+</html>
